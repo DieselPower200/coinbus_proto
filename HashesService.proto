@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package hashes;
 
+option go_package = "github.com/DieselPower200/coinbus_proto/coinbuspb";
+
 // Service definition
 service HashesService {
   // CreateHash method
