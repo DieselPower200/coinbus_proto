@@ -20,31 +20,44 @@ message Options {
   string version = 3;
 }
 
-// Common base for hash-related requests
-message HashBaseFields {
+// Shared fields for hash operations
+message SharedHashFields {
   uint64 user_id = 1;
   string coin_id = 2;
   string hash = 3;
-
-  string value = 5;
-  string type = 6;
-  Options options = 7;
+  string value = 4;
+  string type = 5;
+  Options options = 6;
 }
 
 // Specific request to create a hash
 message CreateHashRequest {
-  HashBaseFields base = 1; // Reuse common fields
-  string password = 2;
+  uint64 user_id = 1;
+  string coin_id = 2;
+  string hash = 3;
+  string value = 4;
+  string type = 5;
+  Options options = 6; // Reused directly
+  string password = 7; // Additional field
 }
 
 // Specific request to update a hash
 message UpdateHashRequest {
-  HashBaseFields base = 1; // Reuse common fields
+  uint64 user_id = 1;
+  string coin_id = 2;
+  string hash = 3;
+  string value = 4;
+  Options options = 5; // Reused directly
 }
 
 // Response message for hash operations
 message HashResponse {
-  HashBaseFields base = 1; // Reuse common fields
-  string created_at = 2; // ISO 8601 timestamp format
-  string updated_at = 3; // ISO 8601 timestamp format
+  uint64 user_id = 1;
+  string coin_id = 2;
+  string hash = 3;
+  string value = 4;
+  string type = 5;
+  Options options = 6; // Reused directly
+  string created_at = 7; // ISO 8601 timestamp format
+  string updated_at = 8; // ISO 8601 timestamp format
 }
