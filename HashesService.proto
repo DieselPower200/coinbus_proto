@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package github.com.DieselPower200.coinbus_proto;
 
-option go_package = "github.com/DieselPower200/coinbus/hashes/internal/grpc";
+option go_package = "internal/grpc";
 
 // Service definition
 service HashesService {
