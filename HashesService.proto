@@ -52,12 +52,13 @@ message UpdateHashRequest {
 
 // Response message for hash operations
 message HashResponse {
-  uint64 user_id = 1;
-  string coin_id = 2;
-  string hash = 3;
-  string value = 4;
-  string type = 5;
-  Options options = 6; // Reused directly
-  string created_at = 7; // ISO 8601 timestamp format
-  string updated_at = 8; // ISO 8601 timestamp format
+  string id = 1;
+  uint64 user_id = 2;
+  string coin_id = 3;
+  string hash = 4;
+  string value = 5;
+  string type = 6;
+  Options options = 7; // Reused directly
+  string created_at = 8; // ISO 8601 timestamp format
+  string updated_at = 9; // ISO 8601 timestamp format
 }
