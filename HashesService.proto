@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package hashes;
+
+// Service definition
+service HashesService {
+  // CreateHash method
+  rpc CreateHash(CreateHashRequest) returns (HashResponse);
+
+  // UpdateHash method
+  rpc UpdateHash(UpdateHashRequest) returns (HashResponse);
+}
+
+
+message Options {
+  uint64 account_index = 1;
+  uint64 walletId = 2;
+  string version = 3;
+}
+
+
+// Request message for CreateHash
+message CreateHashRequest {
+  uint64 user_id = 1;
+  string coin_id = 2;
+  string password = 3;
+  string value = 4;
+  string type = 5;
+  Options options = 6;
+}
+
+// Request message for UpdateHash
+message UpdateHashRequest {
+  uint64 user_id = 1;
+  string coin_id = 2;
+  string password = 3;
+  string value = 4;
+  string type = 5;
+  Options options = 6;
+}
+
+// Response message for both methods
+message HashResponse {
+  uint64 user_id = 1;
+  string coin_id = 2;
+  string value = 3;
+  string type = 5;
+  Options options = 6;
+  string created_at = 7; // ISO 8601 timestamp format
+  string updated_at = 8; // ISO 8601 timestamp format
+
+}
