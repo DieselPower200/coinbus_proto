@@ -16,36 +16,37 @@ service HashesService {
 
 message Options {
   uint64 account_index = 1;
-  uint64 walletId = 2;
+  uint64 wallet_id = 2;
   string version = 3;
 }
 
+// Common base for hash-related requests
+message HashBaseRequest {
+  uint64 user_id = 1;
+  string coin_id = 2;
+  string hash = 3;
+  string password = 4;
+  string value = 5;
+  string type = 6;
+  Options options = 7;
+}
 
-// Request message for CreateHash
+// Specific request to create a hash
 message CreateHashRequest {
-  uint64 user_id = 1;
-  string coin_id = 2;
-  string password = 3;
-  string value = 4;
-  string type = 5;
-  Options options = 6;
+  HashBaseRequest base = 1; // Reuse common fields
 }
 
-// Request message for UpdateHash
+// Specific request to update a hash
 message UpdateHashRequest {
-  uint64 user_id = 1;
-  string coin_id = 2;
-  string password = 3;
-  string value = 4;
-  string type = 5;
-  Options options = 6;
+  HashBaseRequest base = 1; // Reuse common fields
 }
 
-// Response message for both methods
+// Response message for hash operations
 message HashResponse {
   uint64 user_id = 1;
   string coin_id = 2;
-  string value = 3;
+  string hash = 3;
+  string value = 4;
   string type = 5;
   Options options = 6;
   string created_at = 7; // ISO 8601 timestamp format
